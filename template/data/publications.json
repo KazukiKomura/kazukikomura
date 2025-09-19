@@ -1,0 +1,23 @@
+{
+  "conference": [
+    {
+      "title": "Robot can reduce superior's dominance in group discussions with human social hierarchy",
+      "authors": "Kazuki Komura, Kumi Ozaki, Seiji Yamada",
+      "venue": "In Proceedings of the 12th International Conference on Human-Agent Interaction 2024 (HAI 2024)",
+      "year": "2024",
+      "status": "accepted",
+      "location": "Swansea, UK",
+      "doi": ""
+    }
+  ],
+  "domestic": [
+    {
+      "title": "チャットボットの対話スタイルはユーザの自己開示に影響を与えるか？",
+      "authors": "小村 和輝, 野村 理朗",
+      "venue": "日本心理学会大会発表論文集",
+      "volume": "87",
+      "year": "2023",
+      "doi": "https://doi.org/10.4992/pacjpa.87.0_2B-050-PI"
+    }
+  ]
+}

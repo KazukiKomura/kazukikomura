@@ -1,0 +1,20 @@
+{
+  "name": {
+    "first": "Kazuki",
+    "last": "Komura"
+  },
+  "email": "kazukikomura@nii.ac.jp",
+  "bio": "I am currently a second-year student (M2) in a five-year integrated doctoral program. My research theme is the interaction between humans and AI, specifically focusing on the impact of AI agent behavior on human groups and whether AI agents are accepted by humans. Additionally, I am interested in the social penetration of AI and am involved in promoting DX projects at Matsuo Institute Inc.",
+  "socialLinks": [
+    {
+      "platform": "github",
+      "url": "https://github.com/kazukikomura",
+      "icon": "fab fa-github"
+    },
+    {
+      "platform": "facebook",
+      "url": "https://www.facebook.com/profile.php?id=100026243132464&locale=ja_JP",
+      "icon": "fab fa-facebook-f"
+    }
+  ]
+}
