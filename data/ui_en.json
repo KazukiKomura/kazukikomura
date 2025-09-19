@@ -1,0 +1,18 @@
+{
+  "nav": {
+    "about": "About",
+    "experience": "Experience",
+    "education": "Education",
+    "publications": "Publications"
+  },
+  "sections": {
+    "experience": "Experience",
+    "education": "Education",
+    "publications": "Publications"
+  },
+  "publications": {
+    "conference": "Conference (Peer-reviewed)",
+    "domestic": "Domestic Conferences"
+  },
+  "footer": "© 2024 Kazuki Komura. All rights reserved."
+}

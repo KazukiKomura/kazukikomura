@@ -14,10 +14,14 @@
         <div class="nav-container">
             <div class="nav-brand">Kazuki Komura</div>
             <div class="nav-menu">
-                <a href="#about" class="nav-link">About</a>
-                <a href="#experience" class="nav-link">Experience</a>
-                <a href="#education" class="nav-link">Education</a>
-                <a href="#publications" class="nav-link">Publications</a>
+                <a href="#about" class="nav-link" data-key="nav.about">About</a>
+                <a href="#experience" class="nav-link" data-key="nav.experience">Experience</a>
+                <a href="#education" class="nav-link" data-key="nav.education">Education</a>
+                <a href="#publications" class="nav-link" data-key="nav.publications">Publications</a>
+                <div class="language-switcher">
+                    <button class="lang-btn active" data-lang="ja">日本語</button>
+                    <button class="lang-btn" data-lang="en">English</button>
+                </div>
             </div>
         </div>
     </nav>
@@ -48,7 +52,7 @@
         <!-- Experience Section -->
         <section id="experience" class="section">
             <div class="container">
-                <h2 class="section-title">Experience</h2>
+                <h2 class="section-title" data-key="sections.experience">Experience</h2>
                 <div class="timeline" id="experience-list"></div>
             </div>
         </section>
@@ -56,7 +60,7 @@
         <!-- Education Section -->
         <section id="education" class="section">
             <div class="container">
-                <h2 class="section-title">Education</h2>
+                <h2 class="section-title" data-key="sections.education">Education</h2>
                 <div class="timeline" id="education-list"></div>
             </div>
         </section>
@@ -64,14 +68,14 @@
         <!-- Publications Section -->
         <section id="publications" class="section">
             <div class="container">
-                <h2 class="section-title">Publications</h2>
+                <h2 class="section-title" data-key="sections.publications">Publications</h2>
                 <div class="publications-content">
                     <div class="publication-category">
-                        <h3 class="category-title">Conference (Peer-reviewed)</h3>
+                        <h3 class="category-title" data-key="publications.conference">Conference (Peer-reviewed)</h3>
                         <ul class="publication-list" id="conference-publications"></ul>
                     </div>
                     <div class="publication-category">
-                        <h3 class="category-title">Domestic Conferences</h3>
+                        <h3 class="category-title" data-key="publications.domestic">Domestic Conferences</h3>
                         <ul class="publication-list" id="domestic-publications"></ul>
                     </div>
                 </div>
@@ -81,7 +85,7 @@
 
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2024 Kazuki Komura. All rights reserved.</p>
+            <p data-key="footer">&copy; 2024 Kazuki Komura. All rights reserved.</p>
         </div>
     </footer>
 

@@ -1,47 +1,140 @@
+// Global variables
+let currentLanguage = 'ja'; // Default to Japanese
+let translations = {};
+let profileData = {};
+let experienceData = [];
+let educationData = [];
+let publicationsData = {};
+
 // Load data from JSON files and populate the page
 document.addEventListener('DOMContentLoaded', async function() {
+    // Initialize language from localStorage or default to Japanese
+    currentLanguage = localStorage.getItem('language') || 'ja';
+    
     try {
-        // Load all data files
-        const basePath = 'data/';
-        const [profileData, experienceData, educationData, publicationsData] = await Promise.all([
-            fetch(`${basePath}profile.json`).then(res => {
-                if (!res.ok) throw new Error(`Failed to load profile.json: ${res.status}`);
-                return res.json();
-            }),
-            fetch(`${basePath}experience.json`).then(res => {
-                if (!res.ok) throw new Error(`Failed to load experience.json: ${res.status}`);
-                return res.json();
-            }),
-            fetch(`${basePath}education.json`).then(res => {
-                if (!res.ok) throw new Error(`Failed to load education.json: ${res.status}`);
-                return res.json();
-            }),
-            fetch(`${basePath}publications.json`).then(res => {
-                if (!res.ok) throw new Error(`Failed to load publications.json: ${res.status}`);
-                return res.json();
-            })
-        ]);
-
-        // Populate profile section
-        populateProfile(profileData);
+        // Load translations and data
+        await loadTranslations();
+        await loadData();
         
-        // Populate experience section
-        populateExperience(experienceData);
+        // Setup language switcher
+        setupLanguageSwitcher();
         
-        // Populate education section
-        populateEducation(educationData);
+        // Apply initial language
+        applyLanguage();
         
-        // Populate publications section
-        populatePublications(publicationsData);
+        // Populate content
+        populateContent();
 
         // Add smooth scrolling for navigation
         initSmoothScrolling();
         
     } catch (error) {
         console.error('Error loading data:', error);
-        // Fallback: show error message or use default content
     }
 });
+
+async function loadTranslations() {
+    try {
+        const [jaTranslations, enTranslations] = await Promise.all([
+            fetch('./data/ui_ja.json').then(res => res.json()),
+            fetch('./data/ui_en.json').then(res => res.json())
+        ]);
+        
+        translations = {
+            ja: jaTranslations,
+            en: enTranslations
+        };
+    } catch (error) {
+        console.error('Error loading translations:', error);
+    }
+}
+
+async function loadData() {
+    try {
+        const basePath = './data/';
+        
+        console.log('Loading data files...');
+        
+        const [jaProfile, enProfile, jaExperience, enExperience, jaEducation, enEducation, publications] = await Promise.all([
+            fetch(`${basePath}profile_ja.json`).then(res => res.json()),
+            fetch(`${basePath}profile.json`).then(res => res.json()),
+            fetch(`${basePath}experience_ja.json`).then(res => res.json()),
+            fetch(`${basePath}experience.json`).then(res => res.json()),
+            fetch(`${basePath}education_ja.json`).then(res => res.json()),
+            fetch(`${basePath}education.json`).then(res => res.json()),
+            fetch(`${basePath}publications.json`).then(res => res.json())
+        ]);
+        
+        profileData = { ja: jaProfile, en: enProfile };
+        experienceData = { ja: jaExperience, en: enExperience };
+        educationData = { ja: jaEducation, en: enEducation };
+        publicationsData = publications;
+        
+    } catch (error) {
+        console.error('Error loading data:', error);
+        throw error;
+    }
+}
+
+function setupLanguageSwitcher() {
+    const langButtons = document.querySelectorAll('.lang-btn');
+    
+    // Set initial active state
+    langButtons.forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === currentLanguage);
+        btn.addEventListener('click', () => switchLanguage(btn.dataset.lang));
+    });
+}
+
+function switchLanguage(lang) {
+    currentLanguage = lang;
+    localStorage.setItem('language', lang);
+    
+    // Update button states
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+    });
+    
+    // Apply language and repopulate content
+    applyLanguage();
+    populateContent();
+}
+
+function applyLanguage() {
+    const currentTranslations = translations[currentLanguage] || translations.ja;
+    
+    // Update UI text using data-key attributes
+    document.querySelectorAll('[data-key]').forEach(element => {
+        const key = element.dataset.key;
+        const text = getNestedValue(currentTranslations, key);
+        if (text) {
+            element.textContent = text;
+        }
+    });
+}
+
+function getNestedValue(obj, path) {
+    return path.split('.').reduce((current, key) => current && current[key], obj);
+}
+
+function populateContent() {
+    // Clear existing content
+    clearContent();
+    
+    // Populate with current language data
+    populateProfile(profileData[currentLanguage]);
+    populateExperience(experienceData[currentLanguage]);
+    populateEducation(educationData[currentLanguage]);
+    populatePublications(publicationsData);
+}
+
+function clearContent() {
+    document.getElementById('social-links').innerHTML = '';
+    document.getElementById('experience-list').innerHTML = '';
+    document.getElementById('education-list').innerHTML = '';
+    document.getElementById('conference-publications').innerHTML = '';
+    document.getElementById('domestic-publications').innerHTML = '';
+}
 
 function populateProfile(data) {
     document.getElementById('first-name').textContent = data.name.first;
