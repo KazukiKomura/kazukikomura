@@ -1,6 +1,90 @@
 <!DOCTYPE html>
-<html>
-    <head>
-         <meta http-equiv="refresh" content="0; url=https://kazukikomura.github.io/kazukikomura/template/index.html"> 
-    </head>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kazuki Komura - Personal Page</title>
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet" />
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">Kazuki Komura</div>
+            <div class="nav-menu">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#experience" class="nav-link">Experience</a>
+                <a href="#education" class="nav-link">Education</a>
+                <a href="#publications" class="nav-link">Publications</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section id="about" class="hero-section">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="profile-image">
+                        <img src="assets/img/profile.jpg" alt="Kazuki Komura" class="profile-img">
+                    </div>
+                    <div class="hero-text">
+                        <h1 class="hero-title">
+                            <span id="first-name">Kazuki</span>
+                            <span id="last-name">Komura</span>
+                        </h1>
+                        <div class="hero-subtitle">
+                            <a href="mailto:" id="email-link"></a>
+                        </div>
+                        <p class="hero-description" id="bio"></p>
+                        <div class="social-links" id="social-links"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="section">
+            <div class="container">
+                <h2 class="section-title">Experience</h2>
+                <div class="timeline" id="experience-list"></div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education" class="section">
+            <div class="container">
+                <h2 class="section-title">Education</h2>
+                <div class="timeline" id="education-list"></div>
+            </div>
+        </section>
+
+        <!-- Publications Section -->
+        <section id="publications" class="section">
+            <div class="container">
+                <h2 class="section-title">Publications</h2>
+                <div class="publications-content">
+                    <div class="publication-category">
+                        <h3 class="category-title">Conference (Peer-reviewed)</h3>
+                        <ul class="publication-list" id="conference-publications"></ul>
+                    </div>
+                    <div class="publication-category">
+                        <h3 class="category-title">Domestic Conferences</h3>
+                        <ul class="publication-list" id="domestic-publications"></ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Kazuki Komura. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/scripts.js"></script>
+</body>
 </html>
